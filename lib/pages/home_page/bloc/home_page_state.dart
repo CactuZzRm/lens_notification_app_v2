@@ -1,6 +1,12 @@
 part of 'home_page_bloc.dart';
 
-@immutable
-sealed class HomePageState {}
 
-final class HomePageInitial extends HomePageState {}
+class HomePageState {}
+
+class HomePageLoading extends HomePageState {} 
+
+class HomePageInitial extends HomePageState {
+  final DateTime? date;
+
+  HomePageInitial({this.date});
+}
