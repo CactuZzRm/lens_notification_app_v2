@@ -7,7 +7,7 @@ part 'home_page_state.dart';
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageBloc() : super(HomePageLoading()) {
     on<HomePageInitEvent>((event, emit) {
-      DateTime? date = DateTime.now();
+      DateTime? date = null;
       emit(HomePageInitial(date: date));
     });
   }

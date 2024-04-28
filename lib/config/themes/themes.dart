@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 final darkTheme = ThemeData(
   scaffoldBackgroundColor: const Color.fromRGBO(17, 21, 50, 1),
-  primaryColor: Colors.red,
+
+  primaryColor: const Color.fromRGBO(223, 223, 223, 1),
   backgroundColor: Colors.red,
   textTheme: TextTheme(
     bodySmall: TextStyle(
@@ -11,6 +12,10 @@ final darkTheme = ThemeData(
     ),
     bodyMedium: TextStyle(
       fontSize: 14,
+      color: const Color.fromRGBO(230, 230, 230, 1),
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 20,
       color: const Color.fromRGBO(230, 230, 230, 1),
     ),
   ),
