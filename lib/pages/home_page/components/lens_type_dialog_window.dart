@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import 'dialog_selectable_element.dart';
 
-class DialogWindow extends StatelessWidget {
-  const DialogWindow({
+class LensTypeDialogWindow extends StatelessWidget {
+  const LensTypeDialogWindow({
     super.key,
   });
 

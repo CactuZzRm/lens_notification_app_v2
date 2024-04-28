@@ -12,7 +12,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     });
   }
 
-  double angle = 360;
+  double angle = 360;  
 
   void flipIcon() {
     angle != 0 ? angle = 0 : angle = 720;
