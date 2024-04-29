@@ -30,14 +30,15 @@ class HomeAppBar extends StatelessWidget {
                       builder: (context, value, child) => Transform.rotate(
                         angle: value * math.pi / 180,
                         child: AnimatedCrossFade(
+                          alignment: Alignment.center,
                           duration: const Duration(milliseconds: 800),
                           firstChild: SvgPicture.asset(
-                            'assets/icons/svg/sun2.svg',
-                            color: const Color.fromRGBO(230, 233, 70, 1),
-                          ),
-                          secondChild: SvgPicture.asset(
                             'assets/icons/svg/moon.svg',
                             color: const Color.fromRGBO(84, 125, 189, 1),
+                          ),
+                          secondChild: SvgPicture.asset(
+                            'assets/icons/svg/sun2.svg',
+                            color: const Color.fromRGBO(230, 233, 70, 1),
                           ),
                           crossFadeState: (context.watch<ThemeCubit>().state as ThemeInitial).isDarkTheme
                               ? CrossFadeState.showFirst
@@ -46,10 +47,9 @@ class HomeAppBar extends StatelessWidget {
                       ),
                       // child:
                     ),
-                    onPressed: () {                      
+                    onPressed: () {
                       context.read<ThemeCubit>().changeTheme(context);
                       context.read<HomePageBloc>().flipIcon();
-                      // context.read<HomePageBloc>().changeIcon();
                     },
                     // onPressed: () => print('bup'),
                   );

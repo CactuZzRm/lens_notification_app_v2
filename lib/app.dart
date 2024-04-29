@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/router/router.dart';
 import 'config/themes/themes.dart';
+import 'pages/dialog_handler/cubit/dialog_handler_cubit.dart';
 import 'pages/home_page/bloc/home_page_bloc.dart';
 import 'theme_cubit.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         providers: [
           // Cubits
           BlocProvider(create: (context) => ThemeCubit()),
+          BlocProvider(create: (context) => DialogHandlerCubit()),
 
           // BloC
           BlocProvider(create: (context) => HomePageBloc()),

@@ -17,8 +17,11 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
-      child: SafeArea(
+    final theme = Theme.of(context);
+    
+    return Material(
+      color: theme.scaffoldBackgroundColor,
+      child: const SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
