@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/lens_types.dart';
 
@@ -7,18 +9,26 @@ part 'home_page_state.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageBloc() : super(HomePageLoading()) {
-    on<HomePageInitEvent>((event, emit) {
-      DateTime? date;
-      int? lensType = 0;
-
-      emit(HomePageInitial(date: date, lensType: lensType));
-    });
+    on<HomePageInitEvent>((event, emit) => init());
   }
+
+  final sharedPreferences = GetIt.I<SharedPreferences>();
 
   double angle = 360;
 
   DateTime? tempDate = DateTime.now();
   int tempLensTypeIndex = 0;
+
+  void init() {
+    DateTime? date;
+    int? lensType = 0;
+
+    if (sharedPreferences.getString('date') != null) {
+      date = DateTime.parse(sharedPreferences.getString('date')!);
+    }
+
+    emit(HomePageInitial(date: date, lensType: lensType));
+  }
 
   void setDate(DateTime date) {
     tempDate = date;
@@ -28,15 +38,16 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
   void setLensType(int typeIndex) {
     tempLensTypeIndex = typeIndex;
-    
+
     emit(HomePageInitial(lensType: tempLensTypeIndex, date: (state as HomePageInitial).date));
   }
 
   void confirmDateAndLens() {
     final lensTypesValues = lensTypes.values.toList();
     DateTime nextDate = tempDate!.add(lensTypesValues[tempLensTypeIndex]);
-    tempDate = nextDate; 
-    
+    tempDate = nextDate;
+    sharedPreferences.setString('date', tempDate.toString());
+
     emit(HomePageInitial(date: nextDate, lensType: tempLensTypeIndex));
   }
 

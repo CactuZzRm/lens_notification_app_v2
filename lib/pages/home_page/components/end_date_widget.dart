@@ -22,7 +22,7 @@ class EndDateWidget extends StatelessWidget {
             const SizedBox(height: 2),
             Text(
               isDateSet
-                  ? DateFormat('dd:MM:yyyy').format((context.watch<HomePageBloc>().state as HomePageInitial).date!)
+                  ? DateFormat('dd.MM.yyyy').format((context.watch<HomePageBloc>().state as HomePageInitial).date!)
                   : 'Интервал не задан',
               style: theme.textTheme.bodySmall!.copyWith(fontSize: 18),
             ),
