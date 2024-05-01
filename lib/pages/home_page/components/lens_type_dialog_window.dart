@@ -20,6 +20,8 @@ class LensTypeDialogWindow extends StatelessWidget {
 
     return BlocBuilder<HomePageBloc, HomePageState>(
       builder: (context, state) {
+        final lensTypesKeys = lensTypes.keys.toList();
+
         return Container(
           key: lensTypeDialogGlobalKey,
           width: MediaQuery.of(context).size.width * 0.8,
@@ -34,10 +36,10 @@ class LensTypeDialogWindow extends StatelessWidget {
             children: [
               Text('Выберете тип линз', style: theme.textTheme.bodyLarge),
               const SizedBox(height: 8),
-              DialogSelectableElement(text: lensTypes[0], value: 0),
-              DialogSelectableElement(text: lensTypes[1], value: 1),
-              DialogSelectableElement(text: lensTypes[2], value: 2),
-              DialogSelectableElement(text: lensTypes[3], value: 3),
+              DialogSelectableElement(text: lensTypesKeys[0], value: 0),
+              DialogSelectableElement(text: lensTypesKeys[1], value: 1),
+              DialogSelectableElement(text: lensTypesKeys[2], value: 2),
+              DialogSelectableElement(text: lensTypesKeys[3], value: 3),
               const SizedBox(height: 12),
               DialogButtons(
                 acceptButtonOnPressed: () =>

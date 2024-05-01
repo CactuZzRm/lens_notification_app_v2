@@ -21,7 +21,7 @@ class StyledDatePickerWidget extends StatelessWidget {
         ),
       ),
       child: CupertinoDatePicker(
-        initialDateTime: DateTime.now(),
+        initialDateTime: (context.watch<HomePageBloc>().state as HomePageInitial).date ?? DateTime.now(),
         mode: CupertinoDatePickerMode.date,
         onDateTimeChanged: (DateTime newDate) {
           context.read<HomePageBloc>().setDate(newDate);
